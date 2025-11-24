@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detaylı Bilgi ve İletişim - Eğitim Kurumu</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <strong>Eğitim Kurumu</strong>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="akademik.html">Akademik</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="detayli-bilgi.html" class="active">Detaylı Bilgi</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container reveal-on-scroll">
+                <h1>Detaylı Bilgi ve İletişim</h1>
+                <p class="subtitle">Sorularınız, kayıt randevusu ve yerleşkemizi ziyaret etmek için bize ulaşın.</p>
+            </div>
+        </section>
+
+        <section class="contact-page-section">
+            <div class="container contact-page-grid reveal-on-scroll">
+                
+                <div class="contact-info-box">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Dershanemizi ziyaret ederek eğitim danışmanlarımızla yüz yüze görüşebilir, sınıflarımızı gezebilirsiniz.</p>
+                    
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adres:</strong><br>
+                                Örnek Mah. Eğitim Cad. No:123<br>
+                                Merkez, Eskişehir, Türkiye
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Telefon:</strong><br>
+                                <a href="tel:02221234567">(0222) 123 45 67</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>E-posta:</strong><br>
+                                <a href="mailto:bilgi@egitimkurumu.com">bilgi@egitimkurumu.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Çalışma Saatleri:</strong><br>
+                                Pazartesi - Cumartesi: 09:00 - 19:00<br>
+                                Pazar: Kapalı
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.620029864796!2d30.525631076541655!3d39.77054697155073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cc160000000001%3A0x123456789abcdef!2sEski%C5%9Fehir!5e0!3m2!1str!2str!4v1698765432100!5m2!1str!2str" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <h3>Sizi Arayalım / Bilgi Talep Edin</h3>
+                    <div class="form-notice">
+                        <p><strong>Not:</strong> Kurumumuzda online kayıt işlemi yapılmamaktadır. Aşağıdaki formu doldurduğunuzda eğitim danışmanlarımız size dönüş yaparak detaylı bilgi verecek veya randevu oluşturacaktır.</p>
+                    </div>
+
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="fullname">Adınız Soyadınız (Veli/Öğrenci)</label>
+                            <input type="text" id="fullname" name="fullname" required placeholder="Adınız Soyadınız">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon Numaranız</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="05XX XXX XX XX">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grade">Öğrenci Sınıf Seviyesi</label>
+                            <select id="grade" name="grade" required>
+                                <option value="" disabled selected>Seçiniz...</option>
+                                <option value="9">9. Sınıf</option>
+                                <option value="10">10. Sınıf</option>
+                                <option value="11">11. Sınıf (TYT Başlangıç)</option>
+                                <option value="12">12. Sınıf (YKS Hazırlık)</option>
+                                <option value="mezun">Mezun (YKS Hazırlık)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mesajınız / Sorularınız</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Hangi konuda bilgi almak istersiniz?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-explore full-width">Formu Gönder</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h3>Eğitim Kurumu</h3>
+                <p>Geleceğinize odaklanan, yenilikçi ve köklü bir eğitim anlayışıyla hizmetinizdeyiz. Zengin tarihimiz değerlerimizin temelidir.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="akademik.html">Akademik</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="detayli-bilgi.html">Detaylı Bilgi</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>İletişim</h3>
+                <p>
+                    Örnek Mah. Eğitim Cad. No:123<br>
+                    Merkez, Eskişehir, Türkiye
+                </p>
+                <p>
+                    <strong>Telefon:</strong> (0222) 123 45 67<br>
+                    <strong>E-posta:</strong> bilgi@egitimkurumu.com
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Eğitim Kurumu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
