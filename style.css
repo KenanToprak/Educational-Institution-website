@@ -1,12 +1,13 @@
-/* --- 1. TEMEL SIFIRLAMA VE AYARLAR (EN ÖNEMLİ KISIM) --- */
+/* =========================================
+   1. TEMEL AYARLAR VE SIFIRLAMA
+   ========================================= */
 * {
-    /* Bu satır, kutuların boyutunu padding dahil hesaplar. Taşmayı engeller. */
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Taşmaları engeller */
 }
 
 :root {
-    --primary-color: #002347;
-    --accent-color: #d9534f;
+    --primary-color: #002347; /* Koyu Mavi */
+    --accent-color: #d9534f;  /* Kırmızı */
     --text-dark: #333;
     --text-light: #f4f4f4;
     --section-bg: #f9f9f9;
@@ -16,8 +17,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* Yatay taşmayı kesinlikle engeller */
-    overflow-x: hidden; 
+    overflow-x: hidden; /* Yatay kaydırmayı engeller (Mobil düzeltmesi) */
     scroll-behavior: smooth;
     font-family: 'Open Sans', sans-serif;
     color: var(--text-dark);
@@ -25,22 +25,21 @@ html, body {
     background-color: #fff;
 }
 
-/* Görsellerin asla ekran dışına taşmamasını sağlar */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* --- 2. GENEL DÜZEN --- */
 .container {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
-    /* Container içindeki taşmaları da engelle */
-    overflow: hidden; 
 }
 
+/* =========================================
+   2. TİPOGRAFİ
+   ========================================= */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
     font-weight: 700;
@@ -48,92 +47,172 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
 }
 
-h1 { font-size: 2.5rem; line-height: 1.2; }
-h2 { font-size: 2rem; margin-bottom: 20px; }
-h3 { font-size: 1.4rem; }
+h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
+h2 { font-size: 2.2rem; margin-bottom: 20px; position: relative; display: inline-block; }
+h3 { font-size: 1.5rem; }
 
-section { padding: 60px 0; }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Bölüm Genel Stilleri */
+section { padding: 80px 0; }
 section:nth-of-type(odd) { background-color: var(--section-bg); }
 
-a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+/* Merkezleme ve Intro */
+.text-center { text-align: center; }
+.intro { max-width: 800px; margin: 0 auto 50px auto; text-align: center; }
 
-/* --- 3. HEADER & MENU --- */
+/* =========================================
+   3. HEADER & MENU (MODERN)
+   ========================================= */
 .top-bar {
     background-color: var(--section-bg);
     padding: 10px 0;
     font-size: 0.85rem;
     border-bottom: 1px solid #ddd;
 }
+.top-bar a:hover { color: var(--accent-color); }
+
 .main-nav {
     background-color: #fff;
     padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Modern gölge */
     position: sticky;
     top: 0;
     z-index: 1000;
 }
+
 .main-nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: visible; /* Menü dropdown taşması için */
 }
-.logo { font-size: 1.5rem; font-family: 'Merriweather', serif; color: var(--primary-color); }
+
+.logo { font-size: 1.8rem; font-family: 'Merriweather', serif; color: var(--primary-color); }
+
 .nav-links { list-style: none; margin: 0; padding: 0; display: flex; }
-.nav-links li { margin-left: 20px; }
-.nav-links a { font-weight: 700; color: var(--text-dark); position: relative; }
-.nav-links a.active { color: var(--accent-color); }
+.nav-links li { margin-left: 25px; }
+.nav-links a {
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Menü Altı Çizgi Efekti */
 .nav-links a::after {
-    content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-    background-color: var(--accent-color); transition: width 0.3s;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
 }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--accent-color); }
 
-/* --- 4. HERO SECTION --- */
+/* =========================================
+   4. HERO SECTION (GLASSMORPHISM)
+   ========================================= */
 .hero {
-    background-image: linear-gradient(rgba(0, 35, 71, 0.7), rgba(0, 35, 71, 0.7)), url('https://placehold.co/1920x800/6f8aa9/white?text=Ana+Görsel');
+    background-image: linear-gradient(rgba(0, 35, 71, 0.6), rgba(0, 35, 71, 0.6)), url('https://placehold.co/1920x800/6f8aa9/white?text=Ana+Görsel');
     background-size: cover;
     background-position: center;
     color: #fff;
-    padding: 100px 0;
+    padding: 140px 0;
+    position: relative;
 }
+
 .hero-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
 }
-.hero-left { flex: 1; }
-.hero-left h1 { color: #fff; font-size: 2.5rem; }
-.hero-right {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    border-radius: 8px;
+
+.hero-left { flex: 2; }
+.hero-left .subtitle {
+    font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.9; font-weight: 700;
 }
+.hero-left h1 { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+/* Buton Efektleri */
 .btn-explore {
     background-color: var(--accent-color);
     color: #fff;
-    padding: 12px 25px;
+    padding: 15px 35px;
     border-radius: 5px;
     font-weight: 700;
     display: inline-block;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-explore:hover {
+    transform: translateY(-3px); /* Yukarı kalkma efekti */
+    box-shadow: 0 8px 25px rgba(217, 83, 79, 0.6);
+    background-color: #c9302c;
+}
+.btn-explore.full-width { width: 100%; }
+
+.hero-right {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.15); /* Yarı saydam */
+    backdrop-filter: blur(10px); /* Buzlu cam efekti */
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.events-box h3 { color: #fff; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+.events-box h3 { color: #fff; border-bottom: 2px solid var(--accent-color); padding-bottom: 15px; }
 .events-box ul { list-style: none; padding: 0; }
-.events-box li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.3); }
-.events-box a { color: #fff; font-weight: bold; font-size: 0.95rem; }
+.events-box li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.3); }
+.events-box a { color: #fff; font-weight: 600; font-size: 0.95rem; }
+.events-box a:hover { color: var(--accent-color); padding-left: 5px; }
 
-/* --- 5. GRIDS & CARDS (Akademik, Hakkımızda vb.) --- */
-.program-grid, .program-grid-fours, .feature-grid, .team-grid, .cta-grid, .gallery-grid, .footer-grid, .stats-grid {
+/* =========================================
+   5. PARALAKS & BÖLÜMLER
+   ========================================= */
+.success-stories {
+    background-image: linear-gradient(rgba(0, 35, 71, 0.8), rgba(0, 35, 71, 0.8)), url('https://placehold.co/1920x600/bcaaa4/white?text=Mezunlar');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* PARALAKS EFEKTİ (Resim sabit kalır) */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+.success-stories h2 { color: #fff; }
+.testimonial-quote { font-size: 1.5rem; font-style: italic; opacity: 0.9; max-width: 800px; margin: 0 auto 20px auto; }
+.testimonial-author { font-weight: 700; color: var(--accent-color); font-size: 1.2rem; display: block; }
+
+.page-header {
+    background-image: linear-gradient(rgba(0, 35, 71, 0.8), rgba(0, 35, 71, 0.8)), url('https://placehold.co/1920x400/5a7a9a/white?text=Başlık');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+}
+.page-header h1 { color: #fff; margin: 0; }
+.page-header .subtitle { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; font-weight: 300; }
+
+/* =========================================
+   6. KARTLAR & GRIDLER (ZOOM EFEKTLERİ)
+   ========================================= */
+.program-grid, .program-grid-fours, .feature-grid, .team-grid, .cta-grid, .gallery-grid, .footer-grid, .stats-grid, .contact-page-grid {
     display: grid;
     gap: 30px;
 }
-/* Varsayılan sütun sayıları (Masaüstü) */
+
+/* Masaüstü Grid Sütunları */
 .program-grid { grid-template-columns: repeat(3, 1fr); }
 .program-grid-fours { grid-template-columns: repeat(2, 1fr); }
 .feature-grid { grid-template-columns: repeat(3, 1fr); }
@@ -141,120 +220,146 @@ a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 .cta-grid { grid-template-columns: repeat(4, 1fr); }
 .stats-grid { grid-template-columns: repeat(5, 1fr); }
 .footer-grid { grid-template-columns: repeat(3, 1fr); }
+.contact-page-grid { grid-template-columns: 1fr 1.5fr; }
 
-/* Kart Stilleri */
-.program-card, .feature-item, .team-member, .cta-item {
+/* Genel Kart Stili ve Hover Lift */
+.program-card, .feature-item, .team-member, .contact-info-box, .contact-form-box {
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.program-card:hover, .feature-item:hover, .team-member:hover {
+    transform: translateY(-10px); /* KART HAVALANMA EFEKTİ */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Stratejiler / CTA Kartları (Zoom Efekti) */
 .cta-item {
-    height: 300px;
+    height: 350px;
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden; /* Taşan resmi gizle */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .cta-item a {
-    position: relative; z-index: 2; color: #fff; font-weight: bold;
-    font-family: 'Merriweather', serif; font-size: 1.2rem; padding: 20px; text-align: center;
+    position: relative; z-index: 2; color: #fff;
+    font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.3rem;
+    padding: 30px; text-align: center; width: 100%; transition: transform 0.3s;
+}
+.cta-item::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: inherit; transition: transform 0.5s ease; z-index: 0;
 }
 .cta-item::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
-    background: linear-gradient(to top, rgba(0,35,71,0.9), transparent);
+    background: linear-gradient(to top, rgba(0,35,71,0.95), transparent); z-index: 1; transition: opacity 0.3s;
 }
+.cta-item:hover::before { transform: scale(1.1); /* ZOOM EFEKTİ */ }
+.cta-item:hover a { transform: translateY(-10px); }
 
-/* --- 6. SAYFA BAŞLIKLARI VE BÖLÜMLER --- */
-.page-header {
-    background-color: var(--primary-color);
-    color: #fff;
-    text-align: center;
-    padding: 60px 0;
+/* =========================================
+   7. İSTATİSTİK SAYAÇLARI
+   ========================================= */
+.stats { background-color: var(--primary-color); color: #fff; padding: 60px 0; }
+.stat-item { padding: 10px; transition: transform 0.3s; }
+.stat-item:hover { transform: translateY(-5px); }
+.stat-number {
+    display: block; font-size: 3.5rem; font-weight: 800; color: var(--accent-color);
+    line-height: 1; margin-bottom: 10px; font-family: 'Merriweather', serif;
 }
-.page-header h1 { color: #fff; }
-.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.text-center { text-align: center; }
-.intro { max-width: 800px; margin: 0 auto 40px auto; }
+.stat-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
 
-/* --- 7. İLETİŞİM FORMU --- */
-.contact-page-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-.contact-info-box, .contact-form-box { padding: 30px; border-radius: 8px; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-.contact-info-box { background: var(--primary-color); color: #fff; }
-.contact-info-box h3 { color: #fff; }
+/* =========================================
+   8. DİĞER BİLEŞENLER (Galeri, Form vb.)
+   ========================================= */
+.gallery-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; transition: transform 0.3s; }
+.gallery-grid img:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+.contact-info-box { background-color: var(--primary-color); color: #fff; padding: 40px; }
+.contact-info-box h3 { color: #fff; border-bottom: 2px solid var(--accent-color); }
+.contact-form-box { padding: 40px; }
 .form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 700; }
 .form-group input, .form-group textarea, .form-group select {
     width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;
+    font-family: 'Open Sans', sans-serif; transition: border-color 0.3s;
 }
-.btn-explore.full-width { width: 100%; }
+.form-group input:focus { border-color: var(--primary-color); outline: none; }
 
-/* --- 8. FOOTER --- */
-.main-footer { background-color: var(--primary-color); color: #ccc; padding-top: 50px; }
-.footer-column h3 { color: #fff; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; display: inline-block; }
-.footer-links li { margin-bottom: 8px; }
-.footer-bottom { background: #00152b; padding: 20px 0; text-align: center; margin-top: 30px; }
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.feature-list { list-style: none; padding: 0; }
+.feature-list li { padding-left: 30px; position: relative; margin-bottom: 15px; }
+.feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
 
-/* --- 9. ANİMASYON --- */
-.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-.reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+/* =========================================
+   9. ANİMASYONLAR (SCROLL REVEAL)
+   ========================================= */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
+/* =========================================
+   10. FOOTER
+   ========================================= */
+.main-footer { background-color: var(--primary-color); color: #ccc; padding-top: 60px; }
+.footer-column h3 { color: #fff; margin-bottom: 20px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 5px; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a:hover { color: #fff; padding-left: 5px; }
+.footer-bottom { background: #00152b; padding: 20px 0; text-align: center; margin-top: 40px; }
 
-/* --- 10. MOBİL UYUMLULUK (BURASI SORUNUNUZU ÇÖZECEK) --- */
+/* =========================================
+   11. MOBİL UYUMLULUK (RESPONSIVE)
+   ========================================= */
 
 @media (max-width: 992px) {
-    /* Tablet ayarları */
+    /* Tablet Görünümü */
     .program-grid, .feature-grid, .team-grid, .cta-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-content { flex-direction: column; text-align: center; }
-    .hero-right { width: 100%; margin-top: 30px; }
+    .hero-right { width: 100%; margin-top: 40px; }
+    .contact-page-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    /* TELEFON AYARLARI */
+    /* TELEFON Görünümü (Tüm Taşmaları Engeller) */
     
-    .container { width: 92%; } /* Kenarlardan çok az boşluk bırak */
+    .container { width: 92%; }
     
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.5rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
 
-    /* Menü düzeni */
+    /* Menü */
     .main-nav .container { flex-direction: column; }
-    .nav-links { 
-        flex-direction: column; 
-        align-items: center; 
-        width: 100%; 
-        margin-top: 15px; 
-    }
-    .nav-links li { margin: 5px 0; }
+    .nav-links { flex-direction: column; width: 100%; margin-top: 20px; background: #fafafa; padding: 10px 0; border-radius: 5px; }
+    .nav-links li { margin: 10px 0; }
 
-    /* Gridleri tek sütuna düşür */
-    .hero-content, 
-    .split-section, 
-    .program-grid, 
-    .program-grid-fours,
-    .feature-grid, 
-    .team-grid, 
-    .cta-grid, 
-    .stats-grid,
-    .footer-grid, 
-    .contact-page-grid {
-        grid-template-columns: 1fr !important; /* Tek sütun zorunlu */
+    /* Gridleri Tek Sütuna İndir */
+    .hero-content, .split-section, .program-grid, .program-grid-fours,
+    .feature-grid, .team-grid, .cta-grid, .stats-grid,
+    .footer-grid, .contact-page-grid {
+        grid-template-columns: 1fr !important;
         gap: 25px;
     }
-
-    /* Hero (Ana Görsel) */
-    .hero { padding: 50px 0; }
-    .hero-right { width: 100%; padding: 15px; }
-
-    /* Footer */
-    .footer-grid { text-align: center; }
-    .footer-column h3 { display: inline-block; margin-bottom: 15px; }
-
-    /* Form elemanlarının taşmasını engelle */
-    input, select, textarea { max-width: 100%; }
     
-    /* CTA Kutuları */
-    .cta-item { height: 200px; }
+    /* Özel Düzeltmeler */
+    .hero { padding: 80px 0; }
+    .hero-right { width: 100%; padding: 20px; }
+    .cta-item { height: 250px; }
+    .footer-grid { text-align: center; }
+    .success-stories { background-attachment: scroll; /* Mobilde paralaks bazen sorun çıkarır, iptal edilebilir */ }
 }
