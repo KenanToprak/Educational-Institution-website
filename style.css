@@ -936,64 +936,116 @@ a:hover {
     margin-top: 10px;
 }
 
-/* --- MOBİL UYUMLULUK (Basit) --- */
+/* --- MOBİL UYUMLULUK (RESPONSIVE TASARIM) --- */
+
+/* Tabletler ve Küçük Laptoplar için */
 @media (max-width: 992px) {
-    .hero-content { flex-direction: column; text-align: center; }
-    .hero-right { width: 100%; max-width: 400px; margin-top: 30px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .cta-grid { grid-template-columns: 1fr 1fr; }
-    .program-grid {
-    grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
     }
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun */
+    
+    .hero-right {
+        width: 100%;
+        max-width: 500px; /* Tablette çok geniş olmasın */
+        margin-top: 40px;
     }
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun */
+
+    .program-grid, .program-grid-fours, .feature-grid, .team-grid, .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 sütuna düşür */
     }
+
+    .split-section {
+        grid-template-columns: 1fr; /* Yan yana olan resim/yazıyı alt alta al */
+        text-align: center;
+    }
+
     .contact-page-grid {
-        grid-template-columns: 1fr; /* Mobilde tek sütun */
-    }
-    .contact-info-box {
-        padding: 30px;
-    }
-    .contact-form-box {
-        padding: 30px;
+        grid-template-columns: 1fr;
     }
 }
 
+/* Telefonlar için (Sorununuzu çözecek kısım burası) */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Basitlik için menüyü gizle */
-    .stats-grid { grid-template-columns: 1fr; gap: 30px; }
-    .cta-grid { grid-template-columns: 1fr; }
-    .cta-item { height: 250px; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-    .page-header p.subtitle {
-    font-size: 1.1rem;
+    
+    /* GENEL AYARLAR */
+    .container {
+        width: 90%; /* Kenarlardan boşluk bırak */
     }
-    .program-grid-fours {
-    grid-template-columns: 1fr; /* Mobilde 1 sütuna düşür */
+
+    h1 { font-size: 2rem; } /* Başlıkları küçült */
+    h2 { font-size: 1.6rem; }
+
+    /* HEADER / MENÜ DÜZENLEMESİ */
+    .main-nav .container {
+        flex-direction: column; /* Logoyu ve menüyü alt alta al */
     }
-    .page-header h1 {
-    font-size: 2.2rem;
+    
+    .nav-links {
+        display: flex; /* Gizlemek yerine göster */
+        flex-direction: column; /* Linkleri alt alta diz */
+        align-items: center;
+        margin-top: 15px;
+        background-color: #f9f9f9; /* Menüye arka plan ekle */
+        width: 100%;
+        padding: 10px 0;
+        border-radius: 5px;
     }
-    .program-grid {
-        grid-template-columns: 1fr; /* Mobilde 1 sütun */
+
+    .nav-links li {
+        margin: 8px 0; /* Linkler arası boşluk */
     }
-    .split-section {
-        grid-template-columns: 1fr; /* Mobilde alt alta */
+
+    /* HERO (ANA GÖRSEL) DÜZENLEMESİ */
+    .hero {
+        padding: 60px 0; /* Üst/alt boşluğu azalt */
     }
-    .split-image {
-        margin-bottom: 20px; /* Resim ile yazı arasına boşluk */
+
+    .hero-left h1 {
+        font-size: 1.8rem; /* Ana başlığı telefona sığdır */
     }
-    .about-intro .lead {
-    font-size: 1.1rem;
+
+    .hero-right {
+        width: 100%; /* Kutuyu tam genişlik yap */
+        max-width: 100%;
+        margin-top: 30px;
+        padding: 15px; /* İç boşluğu ayarla */
     }
-    .feature-grid {
-        grid-template-columns: 1fr; /* Mobilde 1 sütun */
+
+    /* GRID SİSTEMLERİNİ TEK SÜTUNA DÜŞÜRME */
+    /* Tüm 2'li, 3'lü, 4'lü yapıları alt alta tek sıra yapar */
+    .stats-grid, 
+    .cta-grid, 
+    .program-grid, 
+    .program-grid-fours, 
+    .feature-grid, 
+    .team-grid, 
+    .footer-grid, 
+    .form-grid {
+        grid-template-columns: 1fr !important; /* Kesinlikle tek sütun olsun */
+        gap: 25px;
     }
-    .team-grid {
-        grid-template-columns: 1fr; /* Mobilde 1 sütun */
+
+    .cta-item {
+        height: 200px; /* Telefondaki kart yüksekliğini azalt */
     }
+
+    /* FOOTER (ALT BİLGİ) DÜZENLEMESİ */
+    .footer-grid {
+        text-align: center; /* Yazıları ortala */
+    }
+
+    .footer-column h3::after {
+        margin: 8px auto 0 auto; /* Başlık altındaki çizgiyi ortala */
+    }
+
+    /* İLETİŞİM FORMU DÜZENLEMESİ */
+    .contact-form-box {
+        padding: 20px; /* Mobilde iç boşluğu azalt */
+    }
+    
+    .contact-info-box {
+        padding: 20px;
+    }
+}
 }
