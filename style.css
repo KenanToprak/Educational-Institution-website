@@ -29,6 +29,10 @@ body {
     margin: 0 auto;
 }
 
+.text-center {
+    text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
     /* Başlıklar için daha şık, tırnaklı bir font */
     font-family: 'Merriweather', serif;
@@ -327,17 +331,8 @@ a:hover {
     transform: translateY(-10px);
 }
 
-/* --- FOOTER --- */
-.main-footer {
-    background-color: #222;
-    color: #aaa;
-    padding: 30px 0;
-    text-align: center;
-    font-size: 0.9rem;
-}
-.main-footer p { margin: 0; }
-
-.reveal-on-scroll {
+/* --- SCROLL ANİMASYONLARI --- */
+.js-reveal-ready .reveal-on-scroll {
     opacity: 0;
     transform: translateY(40px); /* 40px aşağıdan gelsin */
     transition: opacity 1s ease-out, transform 0.8s ease-out;
@@ -347,9 +342,17 @@ a:hover {
 }
 
 /* 2. Bitiş durumu: JavaScript bu sınıfı ekleyecek */
-.reveal-on-scroll.is-visible {
+.js-reveal-ready .reveal-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js-reveal-ready .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* 3. (Opsiyonel) Hero bölümündeki sağ kutu biraz gecikmeli gelsin */
@@ -408,9 +411,20 @@ a:hover {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(0, 35, 71, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 35, 71, 0.2);
+}
+
+.form-feedback {
+    margin-top: 15px;
+    padding: 12px 16px;
+    border-radius: 5px;
+    background-color: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    color: #1b5e20;
+    font-size: 0.95rem;
+    text-align: left;
 }
 
 .contact-form .btn-explore {
@@ -426,6 +440,10 @@ a:hover {
     background-color: var(--primary-color);
     color: rgba(255, 255, 255, 0.8);
     padding-top: 60px;
+    font-size: 0.95rem;
+}
+.main-footer p {
+    margin: 0;
 }
 
 .footer-grid {
@@ -802,7 +820,7 @@ a:hover {
 }
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Esnek grid */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Esnek grid */
     gap: 15px;
     margin-top: 50px;
 }
@@ -841,8 +859,10 @@ a:hover {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
+.contact-info-box h2,
 .contact-info-box h3 {
     color: #fff;
+    font-size: 1.5rem;
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 15px;
     margin-top: 0;
@@ -897,8 +917,10 @@ a:hover {
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
+.contact-form-box h2,
 .contact-form-box h3 {
     margin-top: 0;
+    font-size: 1.5rem;
     color: var(--primary-color);
 }
 
@@ -919,12 +941,15 @@ a:hover {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     background-color: #fff;
+    box-sizing: border-box;
     cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-form-box select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 35, 71, 0.2);
 }
 
 .btn-explore.full-width {
@@ -951,13 +976,19 @@ a:hover {
         margin-top: 40px;
     }
 
-    .program-grid, .program-grid-fours, .feature-grid, .team-grid, .footer-grid {
+    .cta-grid, .program-grid, .program-grid-fours, .feature-grid, .team-grid, .footer-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 sütuna düşür */
     }
 
     .split-section {
         grid-template-columns: 1fr; /* Yan yana olan resim/yazıyı alt alta al */
         text-align: center;
+    }
+
+    .split-section.reverse {
+        grid-template-areas:
+            "image"
+            "content";
     }
 
     .contact-page-grid {
@@ -1012,9 +1043,14 @@ a:hover {
         padding: 15px; /* İç boşluğu ayarla */
     }
 
-    /* GRID SİSTEMLERİNİ TEK SÜTUNA DÜŞÜRME */
+    /* FLEX & GRID SİSTEMLERİNİ TEK SÜTUNA DÜŞÜRME */
+    .stats-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
     /* Tüm 2'li, 3'lü, 4'lü yapıları alt alta tek sıra yapar */
-    .stats-grid, 
     .cta-grid, 
     .program-grid, 
     .program-grid-fours, 
@@ -1047,5 +1083,4 @@ a:hover {
     .contact-info-box {
         padding: 20px;
     }
-}
 }

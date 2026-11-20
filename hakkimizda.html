@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -74,36 +76,36 @@
         <section class="why-choose-us">
             <div class="container text-center intro reveal-on-scroll">
                 <h2>Neden Bizi Seçmelisiniz?</h2>
-                <p>Eğitim Kurumu olarak fark yaratan özelliklerimizle öğrencilerinize en iyisini sunuyoruz.</p>
+                <p>Eğitim Kurumu olarak fark yaratan özelliklerimizle öğrencilerimize en iyisini sunuyoruz.</p>
             </div>
             <div class="container feature-grid reveal-on-scroll">
                 <div class="feature-item">
-                    <i class="icon-teacher"></i> 
+                    <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> 
                     <h3>Uzman Kadro</h3>
                     <p>Alanında deneyimli, YKS müfredatına hakim, öğrencilerle güçlü iletişim kurabilen öğretmenler.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="icon-book"></i> 
+                    <i class="fas fa-book" aria-hidden="true"></i> 
                     <h3>Güncel Müfredat</h3>
                     <p>Milli Eğitim Bakanlığı ve ÖSYM'nin güncel müfredatına tam uyumlu, özgün ders materyalleri.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="icon-chart"></i> 
+                    <i class="fas fa-chart-line" aria-hidden="true"></i> 
                     <h3>Bireysel Rehberlik</h3>
                     <p>Her öğrenciye özel rehberlik, motivasyon takibi ve doğru tercih danışmanlığı.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="icon-medal"></i> 
+                    <i class="fas fa-medal" aria-hidden="true"></i> 
                     <h3>Kanıtlanmış Başarı</h3>
                     <p>Yılların birikimiyle sayısız üniversiteli mezun ve yüksek YKS başarı oranları.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="icon-clock"></i> 
+                    <i class="fas fa-clock" aria-hidden="true"></i> 
                     <h3>Yoğun Etüt İmkanı</h3>
                     <p>Ders sonrası ve hafta sonu birebir veya grup etütleriyle konu pekiştirme fırsatı.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="icon-test"></i> 
+                    <i class="fas fa-clipboard-check" aria-hidden="true"></i> 
                     <h3>Sürekli Deneme</h3>
                     <p>Türkiye geneli ve kuruma özel deneme sınavlarıyla gerçek sınav deneyimi ve gelişim takibi.</p>
                 </div>
@@ -153,7 +155,7 @@
                 <img src="https://placehold.co/800x600/aaa8a4/white?text=Etüt+Salonu" alt="Etüt Salonu">
                 <img src="https://placehold.co/800x600/8d9c8c/white?text=Öğrenci+Çalışma" alt="Öğrenci Çalışma">
                 <img src="https://placehold.co/800x600/7d8c7c/white?text=Koridor" alt="Koridor">
-                <img src="https://placehold.co/800x600/6d7c6c/white?text=Giriş+Alan" alt="Giriş Alanı">
+                <img src="https://placehold.co/800x600/6d7c6c/white?text=Giriş+Alanı" alt="Giriş Alanı">
                 <img src="https://placehold.co/800x600/5d6c5c/white?text=Dış+Görünüm" alt="Dış Görünüm">
             </div>
         </section>
@@ -162,7 +164,7 @@
             <div class="container text-center">
                 <h2>Siz de Başarı Hikayelerimize Katılın</h2>
                 <p>Eğitim Kurumu ailesine katılarak YKS hedeflerinize emin adımlarla ulaşın.</p>
-                <a href="#" class="btn-explore">Randevu Alın</a>
+                <a href="detayli_bilgi.html" class="btn-explore">Randevu Alın</a>
             </div>
         </section>
 
@@ -204,20 +206,26 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            if ('IntersectionObserver' in window) {
+                document.documentElement.classList.add('js-reveal-ready');
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
                 });
-            }, {
-                threshold: 0.1
-            });
 
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-                revealObserver.observe(el);
-            });
+                revealElements.forEach(el => {
+                    revealObserver.observe(el);
+                });
+            } else {
+                revealElements.forEach(el => el.classList.add('is-visible'));
+            }
         });
     </script>
 </body>
